@@ -15,12 +15,32 @@ class TodoListApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Todo List',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        useMaterial3: true, // pakai Material Design 3 (lebih modern)
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.teal,
+          ),
+          bodyMedium: TextStyle(
+            fontSize: 18,
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: MaterialStatePropertyAll(Colors.teal),
+            foregroundColor: MaterialStatePropertyAll(Colors.white),
+          ),
+        ),
+        
+
       ),
       home: const TodoHomePage(),
     );
   }
 }
+
 
 class TodoHomePage extends StatefulWidget {
   const TodoHomePage({super.key});
@@ -87,6 +107,7 @@ class _TodoHomePageState extends State<TodoHomePage> {
                 Expanded(
                   child: TextField(
                     controller: _controller,
+                    style: Theme.of(context).textTheme.bodyMedium,
                     decoration: const InputDecoration(
                       labelText: 'Tambahkan Tugas',
                       border: OutlineInputBorder(),
