@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert'; // Untuk encode/decode data
+import 'dart:convert';
 
 void main() {
   runApp(const TodoListApp());
@@ -16,7 +16,7 @@ class TodoListApp extends StatelessWidget {
       title: 'Todo List',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
-        useMaterial3: true, // pakai Material Design 3 (lebih modern)
+        useMaterial3: true,
         textTheme: const TextTheme(
           titleLarge: TextStyle(
             fontSize: 22,
@@ -33,14 +33,11 @@ class TodoListApp extends StatelessWidget {
             foregroundColor: MaterialStatePropertyAll(Colors.white),
           ),
         ),
-        
-
       ),
       home: const TodoHomePage(),
     );
   }
 }
-
 
 class TodoHomePage extends StatefulWidget {
   const TodoHomePage({super.key});
@@ -51,15 +48,15 @@ class TodoHomePage extends StatefulWidget {
 
 class _TodoHomePageState extends State<TodoHomePage> {
   final List<String> _todos = [];
-  final List<String> _filteredTodos = []; // Daftar tugas yang difilter
+  final List<String> _filteredTodos = [];
   final TextEditingController _controller = TextEditingController();
-  final TextEditingController _searchController = TextEditingController(); // Controller pencarian
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _loadTodos();
-    _searchController.addListener(_filterTodos); // Pantau input search
+    _searchController.addListener(_filterTodos);
   }
 
   Future<void> _loadTodos() async {
@@ -87,7 +84,7 @@ class _TodoHomePageState extends State<TodoHomePage> {
         _controller.clear();
       });
       _saveTodos();
-      _filterTodos(); // Update tampilan setelah tambah
+      _filterTodos();
     }
   }
 
@@ -97,7 +94,7 @@ class _TodoHomePageState extends State<TodoHomePage> {
       _todos.remove(todoToRemove);
     });
     _saveTodos();
-    _filterTodos(); // Update tampilan setelah hapus
+    _filterTodos();
   }
 
   void _filterTodos() {
@@ -110,7 +107,8 @@ class _TodoHomePageState extends State<TodoHomePage> {
       } else {
         _filteredTodos
           ..clear()
-          ..addAll(_todos.where((todo) => todo.toLowerCase().contains(query)));
+          ..addAll(
+              _todos.where((todo) => todo.toLowerCase().contains(query)));
       }
     });
   }
@@ -132,12 +130,20 @@ class _TodoHomePageState extends State<TodoHomePage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            TextField(
+              controller: _searchController,
+              decoration: const InputDecoration(
+                labelText: 'Cari Tugas',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
             Row(
               children: [
                 Expanded(
                   child: TextField(
                     controller: _controller,
-                    style: Theme.of(context).textTheme.bodyMedium,
                     decoration: const InputDecoration(
                       labelText: 'Tambahkan Tugas',
                       border: OutlineInputBorder(),
@@ -154,11 +160,11 @@ class _TodoHomePageState extends State<TodoHomePage> {
             const SizedBox(height: 16),
             Expanded(
               child: ListView.builder(
-                itemCount: _todos.length,
+                itemCount: _filteredTodos.length,
                 itemBuilder: (context, index) {
                   return Card(
                     child: ListTile(
-                      title: Text(_todos[index]),
+                      title: Text(_filteredTodos[index]),
                       trailing: IconButton(
                         icon: const Icon(Icons.delete),
                         onPressed: () => _removeTodo(index),

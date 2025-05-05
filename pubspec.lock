@@ -2,7 +2,7 @@
 # See https://dart.dev/tools/pub/glossary#lockfile
 packages:
   async:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: async
       sha256: d2872f9c19731c2e5f10444b14686eb7cc85c76274bd6c16e1816bff9a3bab63
@@ -50,7 +50,7 @@ packages:
     source: hosted
     version: "1.0.8"
   fake_async:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: fake_async
       sha256: "6a95e56b2449df2273fd8c45a662d6947ce1ebb7aafe80e550a3f68297f3cacc"
@@ -97,7 +97,7 @@ packages:
     source: sdk
     version: "0.0.0"
   leak_tracker:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: leak_tracker
       sha256: c35baad643ba394b40aac41080300150a4f08fd0fd6a10378f8f7c6bc161acec
@@ -105,7 +105,7 @@ packages:
     source: hosted
     version: "10.0.8"
   leak_tracker_flutter_testing:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: leak_tracker_flutter_testing
       sha256: f8b613e7e6a13ec79cfdc0e97638fddb3ab848452eff057653abd3edba760573
@@ -113,7 +113,7 @@ packages:
     source: hosted
     version: "3.0.9"
   leak_tracker_testing:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: leak_tracker_testing
       sha256: "6ba465d5d76e67ddf503e1161d1f4a6bc42306f9d66ca1e8f079a47290fb06d3"
@@ -137,7 +137,7 @@ packages:
     source: hosted
     version: "0.12.17"
   material_color_utilities:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: material_color_utilities
       sha256: f7142bb1154231d7ea5f96bc7bde4bda2a0945d2806bb11670e30b850d56bdec
@@ -310,7 +310,7 @@ packages:
     source: hosted
     version: "0.7.4"
   vector_math:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: vector_math
       sha256: "80b3257d1492ce4d091729e3a67a60407d227c27241d6927be0130c98e741803"
